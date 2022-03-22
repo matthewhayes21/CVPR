@@ -51,8 +51,8 @@ for i = 1:10:60
     figure(1);
     subplot(6,4,row+2)
     hold on;
-    plot(n, F0tdc,'Color',grey);
-    plot(n, F1tdc,'Color',orange);
+    plot(n, F0tac,'Color',grey);
+    plot(n, F1tac,'Color',orange);
     hold off;
     grid();
     title("Temprature");
@@ -72,11 +72,12 @@ for i = 1:10:60
 end
 %%
 % I think n = 400 will be a good time interval 
-N = 400;
+N = 700;
 
 pressure = [];
 vibration = [];
 temprature = [];
+temprature2 = [];
 electordes = [];
 
 % extract the data
@@ -84,10 +85,11 @@ for i = 1:60
    name = [Data(i).folder, slash ,Data(i).name];
    load(name);
    % extract the data
-   pressure = [pressure; F0pdc(400)];
-   vibration = [vibration; F0pac(2,400)];
-   temprature = [temprature; F0tdc(400)];
-   electordes = [electordes; F0Electrodes(:,400)];
+   pressure = [pressure; F0pdc(N)];
+   vibration = [vibration; F0pac(2,N)];
+   temprature = [temprature; F0tac(N)];
+   temprature2 = [temprature2; F0tdc(N)];
+   electordes = [electordes, F0Electrodes(:,N)];
 end
 % save the data
 % NOTE: we know which object data is associated with baced off their
@@ -99,7 +101,7 @@ end
 % colours
 colours = ["#0072BD","#D95319","#EDB120","#7E2F8E","#77AC30","#A2142F"];
 names = ["Acrylic", "Black foam","Car sponge", "Flour sack", "Kitchen sponge","Steel vase"];
-figure(6);
+figure(2);
 view(3)
 hold on
 n = 0;
@@ -117,10 +119,20 @@ title("Scatter plot of the PVT data for the different objects.");
 grid()
 legend()
 
+figure(3);
+view(3)
+hold on
+n = 0;
+for i = 1:6
+    scatter3(pressure(n+1:n+10),vibration(n+1:n+10),temprature2(n+1:n+10),'filled', "DisplayName", names(i),"MarkerFaceColor", colours(i));
+    n = n+10;
+end
+hold off
 
+xlabel("Pressure");
+ylabel("Vibration");
+zlabel("Temprature");
+title("Scatter plot of the PVT data for the different objects.");
 
-
-
-
-
-
+grid()
+legend()
