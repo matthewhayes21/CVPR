@@ -55,7 +55,7 @@ for i = 2:10:60
     plot(n, F1tac,'Color',orange);
     hold off;
     grid();
-    title("Temprature");
+    title("Temperature");
     legend("F0", "F1");
 
     %The Electrode data
@@ -127,10 +127,10 @@ for i = 1:6
 end
 hold off
 
-xlabel("Pressure");
-ylabel("Vibration");
-zlabel("Temprature");
-title("Scatter plot of the PVT data for the different objects.");
+xlabel("Pressure", "FontSize",20);
+ylabel("Vibration", "FontSize",20);
+zlabel("Temperature", "FontSize",20);
+%title("Scatter plot of the PVT data for the different objects.");
 
 grid()
-legend()
+legend("FontSize",20)

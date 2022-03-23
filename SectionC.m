@@ -72,15 +72,15 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Pressure')
-ylabel('Vibreaiton')
-title("Pressure Vs Vibration for the 'Black foam' and 'Car sponge' with the LDA function")
+xlabel('Pressure', "FontSize",25)
+ylabel('Vibreaiton', "FontSize",25)
+%title("Pressure Vs Vibration for the 'Black foam' and 'Car sponge' with the LDA function")
 %--------------------------------------------------------------------------
 % Pressure vs Temp
 disp("---------------------------")
-disp("For Pressure vs Temprature")
+disp("For Pressure vs Temperature")
 [eigenVectors, eigenValues] = LDA(Pressure, Temp)
 
 % get the index of the colum with the max variance
@@ -98,16 +98,16 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) ...
     floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
-xlabel('Pressure')
-ylabel('Temprature')
-title("Pressure Vs Temprature for the 'Black foam' and 'Car sponge' with the LDA function")
+xlabel('Pressure', "FontSize",25)
+ylabel('Temperature', "FontSize",25)
+%title("Pressure Vs Temperature for the 'Black foam' and 'Car sponge' with the LDA function")
 %--------------------------------------------------------------------------
 % Temp vs Vibration
 disp("---------------------------")
-disp("For Temprature vs Vibrations ")
+disp("For Temperature vs Vibrations ")
 [eigenVectors, eigenValues] = LDA(Temp, Vibration)
 
 % get the index of the colum with the max variance
@@ -125,12 +125,12 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 axis([floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))...
     floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Temprature')
-ylabel('Vibrations')
-title("Temprature Vs Vibrations for the 'Black foam' and 'Car sponge' with the LDA function")
+xlabel('Temperature', "FontSize",25)
+ylabel('Vibrations', "FontSize",25)
+%title("Temprature Vs Vibrations for the 'Black foam' and 'Car sponge' with the LDA function")
 
 %% Part B
 disp("----------------------------")
@@ -174,7 +174,7 @@ patch([-eigenVectors(1,vec1Index),-eigenVectors(1,vec2Index),eigenVectors(1,vec1
       'k', 'FaceColor','#0072BD','FaceAlpha', 0.5, "DisplayName", '', 'HandleVisibility', 'off');
 hold off
 
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 grid()
 view(3)
 
@@ -182,11 +182,11 @@ axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all'))...
       floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))...
       floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
 
-xlabel("Pressure");
-ylabel("Vibration");
-zlabel("Temprature");
+xlabel("Pressure", "FontSize",25);
+ylabel("Vibration", "FontSize",25);
+zlabel("Temperature", "FontSize",25);
 
-title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
+%title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
 
 %% Part C
 disp("----------------------------")
@@ -239,16 +239,16 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Pressure')
-ylabel('Vibreaiton')
-title("Pressure Vs Vibration for the 'Acrylic' and 'Steel vase' with the LDA function")
+xlabel('Pressure', "FontSize",25)
+ylabel('Vibreaiton', "FontSize",25)
+%title("Pressure Vs Vibration for the 'Acrylic' and 'Steel vase' with the LDA function")
 
 %--------------------------------------------------------------------------
 % Pressure vs Temp
 disp("---------------------------")
-disp("For Pressure vs Temprature")
+disp("For Pressure vs Temperature")
 [eigenVectors, eigenValues] = LDA(Pressure, Temp)
 
 % get the index of the colum with the max variance
@@ -266,16 +266,16 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) ...
     floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
-xlabel('Pressure')
-ylabel('Temprature')
-title("Pressure Vs Temprature for the 'Acrylic' and 'Steel vase' with the LDA function")
+xlabel('Pressure', "FontSize",25)
+ylabel('Temperature', "FontSize",25)
+%title("Pressure Vs Temprature for the 'Acrylic' and 'Steel vase' with the LDA function")
 %--------------------------------------------------------------------------
 % Temp vs Vibration
 disp("---------------------------")
-disp("For Temprature vs Vibrations ")
+disp("For Temperature vs Vibrations ")
 [eigenVectors, eigenValues] = LDA(Temp, Vibration)
 
 % get the index of the colum with the max variance
@@ -293,12 +293,12 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 axis([floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))...
     floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Temprature')
-ylabel('Vibrations')
-title("Temprature Vs Vibrations for the 'Acrylic' and 'Steel vase' with the LDA function")
+xlabel('Temperature', "FontSize",25)
+ylabel('Vibrations', "FontSize",25)
+%title("Temprature Vs Vibrations for the 'Acrylic' and 'Steel vase' with the LDA function")
 
 %--------------------------------------------------------------------------
 % PVT
@@ -341,7 +341,7 @@ patch([-eigenVectors(1,vec1Index),-eigenVectors(1,vec2Index),eigenVectors(1,vec1
       'k', 'FaceColor','#77AC30','FaceAlpha', 0.5, "DisplayName", '', 'HandleVisibility', 'off');
 hold off
 
-legend('Location','bestoutside')
+legend('Location','bestoutside', "FontSize",25)
 grid()
 view(3)
 
@@ -349,11 +349,11 @@ axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all'))...
       floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))...
       floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
 
-xlabel("Pressure");
-ylabel("Vibration");
-zlabel("Temprature");
+xlabel("Pressure", "FontSize",25);
+ylabel("Vibration", "FontSize",25);
+zlabel("Temperature", "FontSize",25);
 
-title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
+%title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
 
 
 
