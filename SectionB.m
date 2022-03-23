@@ -1,3 +1,8 @@
+% clear the work space and close all open plots
+clear;
+close all;
+
+% set up
 slash = '/'; %<------ use this to change all "/" to "\" or visa versa
 
 colours = ["#0072BD","#D95319","#EDB120","#7E2F8E","#77AC30","#A2142F"];
@@ -8,20 +13,24 @@ orange = "#ff7f0e";
 grey = "#4f4f4f";
 black = "#000000";
 
+
+% load the data
+load('F0_PVT.mat')
+load('F0_Electrodes.mat')
 %% part 1
 
 %  standardise the data
-
 Ap = mean(pressure);
-At = mean(temprature2);
+At = mean(temprature);
 Av = mean(vibration);
 
-Pressure = pressure - Ap;
-Vibration = vibration - Av;
-Temp = temprature2 - At;
+sigmap = std(pressure);
+sigmat = std(temprature);
+sigmav = std(vibration);
 
-% check the new means
-fprintf("The new mean is (%1.2f,%1.2f,%1.2f)\n", mean(Pressure), mean(Temp), mean(Vibration));
+Pressure = (pressure - Ap)./sigmap;
+Vibration = (vibration - Av)./sigmav;
+Temp = (temprature - At)./sigmat;
 
 %%
 % compute the covariance matrcies
@@ -29,7 +38,14 @@ fprintf("The new mean is (%1.2f,%1.2f,%1.2f)\n", mean(Pressure), mean(Temp), mea
 % % calculate the eigne vectors of S
 % [V, D] = eig(S)
 
-[Vec,Projected,Val] = pca([Pressure, Vibration, Temp]);
+% put all measurments in to one vector
+
+PVT = [];
+for i = 1:6
+    PVT = [PVT; Pressure(:,i),Vibration(:,i),Temp(:,i)];
+end
+
+[Vec,Projected,Val] = pca(PVT);
 
 disp("The eigen vecotrs");
 Vec 
@@ -40,24 +56,25 @@ figure(1);
 % plot of the origional data with the eigen vecotrs
 view(3)
 hold on
-n = 0;
+
 for i = 1:6
-    scatter3(Pressure(n+1:n+10),Vibration(n+1:n+10),Temp(n+1:n+10),'filled', "DisplayName", names(i),"MarkerFaceColor", colours(i));
-    n = n+10;
+    scatter3(Pressure(:,i),Vibration(:,i),Temp(:,i),'filled', "DisplayName", names(i),"MarkerFaceColor", colours(i));
 end
 
 % plot the axies
 % plot3([0,0],[floor(min(Vibration)-1) ceil(max(Vibration)+1) ],[0,0],'k--');
 % plot3([floor(min(Pressure)-1) ceil(max(Pressure)+1) ],[0,0],[0,0],'k--');
 % plot3([0,0],[0,0],[floor(min(Temp)-1),ceil(max(Temp)+1)],'k--');
-axis([floor(min(Pressure)-1) ceil(max(Pressure)+1) floor(min(Vibration)-1) ceil(max(Vibration)+1) floor(min(Temp)-1) ceil(max(Temp)+1)])
+axis([floor(min(Pressure, [], 'all')-1) ceil(max(Pressure, [], 'all')+1)...
+    floor(min(Vibration, [], 'all')-1) ceil(max(Vibration, [], 'all')+1)...
+    floor(min(Temp, [], 'all')-1) ceil(max(Temp, [], 'all')+1)])
 axis('equal')
 
 % plot the eigen vectors
 c = [orange; grey; black];
 for i = 1:3
     name = "Principal Componant " +  string(i);
-    plot3([0, Vec(1,i)*20],[0, Vec(2,i)*20],[0, Vec(3,i)*20], "Color",c(i), 'LineWidth', 2, 'DisplayName', name);
+    plot3([0, Vec(1,i)],[0, Vec(2,i)],[0, Vec(3,i)], "Color",c(i), 'LineWidth', 2, 'DisplayName', name);
 end
 hold off
 
@@ -103,7 +120,7 @@ end
 for j = 1:3
     subplot(3,1,j)
     grid();
-    title("Data projected on to proncipal companent "+string(j))
+    title("Data projected on to principal companent "+string(j))
 end
 
 %% Part 2
@@ -113,14 +130,15 @@ Ae = mean(electordes, 2);
 Electordes = zeros(size(electordes));
 
 for i = 1:width(Electordes)
-    Electordes(:,i) = electordes(:,i)-Ae;
+
+    Electordes(:,i) = (electordes(:,i)-Ae)./(std(electordes(:,i)));
 end
 
 [eVec,eProjected, eVal] = pca(transpose(Electordes));
 
 figure(4);
-plot(1:1:length(eVal), eVal, 'o-')
-axis([1  18 0 max(eVal)+10])
+plot(1:1:length(eVal), eVal, 'o-', 'LineWidth',1)
+axis([1  18 0 ceil(max(eVal))])
 grid()
 title("Scree Plot")
 ylabel("Eignnvalue")
@@ -140,6 +158,7 @@ for i = 1:6
 end
 hold off
 legend()
-
-
-
+title("Electrode data for the different objects projected on to the first three principal components");
+xlabel("First Principal Component");
+ylabel("Second Principal Component");
+zlabel("Third Principal Component");

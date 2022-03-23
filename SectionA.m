@@ -12,7 +12,7 @@ grey = '#4f4f4f';
 
 row = 1;
 figure(1);
-for i = 1:10:60
+for i = 2:10:60
     name = [Data(i).folder, slash ,Data(i).name];
     load(name);
 
@@ -74,26 +74,42 @@ end
 % I think n = 400 will be a good time interval 
 N = 700;
 
-pressure = [];
-vibration = [];
-temprature = [];
-temprature2 = [];
-electordes = [];
+% extract all the data and then split in objects later
+p = [];
+v = [];
+t = [];
+e = [];
 
 % extract the data
 for i = 1:60
    name = [Data(i).folder, slash ,Data(i).name];
    load(name);
-   % extract the data
-   pressure = [pressure; F0pdc(N)];
-   vibration = [vibration; F0pac(2,N)];
-   temprature = [temprature; F0tac(N)];
-   temprature2 = [temprature2; F0tdc(N)];
-   electordes = [electordes, F0Electrodes(:,N)];
+   p = [p; F0pdc(N)];
+   v = [v; F0pac(2,N)];
+   t = [t; F0tac(N)];
+   e = [e, F0Electrodes(:,N)];
 end
-% save the data
-% NOTE: we know which object data is associated with baced off their
-% porition in the array
+
+% split the data in to the different objects. 
+% The data will be represented as matrcies were the colums relate to an object
+
+pressure = [];
+vibration = [];
+temprature = [];
+
+% the electrode data is already split
+electordes = e;
+
+for n = 0:10:50
+    pressure = [pressure, p(n+1:n+10)];
+    vibration = [vibration, v(n+1:n+10)];
+    temprature = [temprature, t(n+1:n+10)];
+end
+
+
+% NOTE: for the electrode we know which object data is associated with 
+% baced off their coloum i.e colums 1 to 10 are for one object and 21 to 30
+% are for another 
 
 
 %% Make the sater plot
@@ -104,28 +120,8 @@ names = ["Acrylic", "Black foam","Car sponge", "Flour sack", "Kitchen sponge","S
 figure(2);
 view(3)
 hold on
-n = 0;
 for i = 1:6
-    scatter3(pressure(n+1:n+10),vibration(n+1:n+10),temprature(n+1:n+10),'filled', "DisplayName", names(i),"MarkerFaceColor", colours(i));
-    n = n+10;
-end
-hold off
-
-xlabel("Pressure");
-ylabel("Vibration");
-zlabel("Temprature");
-title("Scatter plot of the PVT data for the different objects.");
-
-grid()
-legend()
-
-figure(3);
-view(3)
-hold on
-n = 0;
-for i = 1:6
-    scatter3(pressure(n+1:n+10),vibration(n+1:n+10),temprature2(n+1:n+10),'filled', "DisplayName", names(i),"MarkerFaceColor", colours(i));
-    n = n+10;
+    scatter3(pressure(i,:),vibration(i,:),temprature(i,:),'filled', "DisplayName", names(i),"MarkerFaceColor", colours(i));
 end
 hold off
 
