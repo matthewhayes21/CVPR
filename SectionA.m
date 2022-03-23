@@ -112,6 +112,8 @@ end
 % are for another 
 
 
+PVT = [transpose(makeVector(Pressure));transpose(makeVector(Vibration));transpose(makeVector(Temp))];
+
 %% Make the sater plot
 
 % colours
