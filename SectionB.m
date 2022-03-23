@@ -20,13 +20,13 @@ load('F0_Electrodes.mat')
 %% part 1
 
 %  standardise the data
-Ap = mean(pressure);
-At = mean(temprature);
-Av = mean(vibration);
+Ap = mean(pressure, 'all');
+At = mean(temprature, 'all');
+Av = mean(vibration, 'all');
 
-sigmap = std(pressure);
-sigmat = std(temprature);
-sigmav = std(vibration);
+sigmap = std(pressure,0, 'all');
+sigmat = std(temprature,0, 'all');
+sigmav = std(vibration,0, 'all');
 
 Pressure = (pressure - Ap)./sigmap;
 Vibration = (vibration - Av)./sigmav;
