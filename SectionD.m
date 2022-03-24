@@ -25,12 +25,12 @@ Y = pdist(X,dist_metric);
 squareform(Y);
 Z = linkage(Y);
 dendrogram(Z,0)
-figure
+figure(1);
 H = dendrogram(Z,0,'ColorThreshold',29,'Labels',objects,"Orientation","right");
 set(gca,'FontSize',6.5)
 % notes: for L2 norm cutoff of 29 will produce 6 object classes
 % and 36 will produce 4 object classes
-figure
+figure(2);
 H = dendrogram(Z,0,'ColorThreshold',36,'Labels',materials,"Orientation","right");
 set(gca,'FontSize',6.5)
 
@@ -60,7 +60,7 @@ for i = 1:length(clusters)
     y = [y; histo_objects];
 end
 
-figure
+figure(3);
 colours = ["#0072BD","#D95319","#EDB120","#7E2F8E","#77AC30","#A2142F"];
 bh = bar(y,'stacked');
 set(bh, 'FaceColor', 'Flat')
@@ -103,7 +103,7 @@ for i = 1:length(clusters)
     y = [y; histo_objects];
 end
 
-figure
+figure(4);
 colours = ["#000000","#FFFF00","#FF00FF","#00FF00"];
 bh = bar(y,'stacked');
 set(bh, 'FaceColor', 'Flat')
@@ -121,12 +121,12 @@ Y = pdist(X,dist_metric);
 squareform(Y);
 Z = linkage(Y);
 dendrogram(Z,0)
-figure
+figure(5);
 H = dendrogram(Z,0,'ColorThreshold',40,'Labels',objects,"Orientation","right");
 set(gca,'FontSize',6.5)
 % notes: for L2 norm cutoff of 29 will produce 6 object classes
 % and 50 will produce 4 object classes
-figure
+figure(6);
 H = dendrogram(Z,0,'ColorThreshold',50,'Labels',materials,"Orientation","right");
 set(gca,'FontSize',6.5)
 
@@ -156,7 +156,7 @@ for i = 1:length(clusters)
     y = [y; histo_objects];
 end
 
-figure
+figure(7);
 colours = ["#0072BD","#D95319","#EDB120","#7E2F8E","#77AC30","#A2142F"];
 bh = bar(y,'stacked');
 set(bh, 'FaceColor', 'Flat')
@@ -199,7 +199,7 @@ for i = 1:length(clusters)
     y = [y; histo_objects];
 end
 
-figure
+figure(8);
 colours = ["#000000","#FFFF00","#FF00FF","#00FF00"];
 bh = bar(y,'stacked');
 set(bh, 'FaceColor', 'Flat')
@@ -239,7 +239,7 @@ Mdl = TreeBagger(50,X,Y,'OOBPrediction','On',...
 
 % view(Mdl.Trees{1},'Mode','graph');
 
-figure;
+figure(9);
 oobErrorBaggedEnsemble = oobError(Mdl);
 plot(oobErrorBaggedEnsemble)
 xlabel 'Number of grown trees';
@@ -250,7 +250,7 @@ no_trees = 13;
 Mdl = TreeBagger(no_trees,X,Y,'OOBPrediction','On',...
     'Method','classification');
 Yfit = predict(Mdl,pca3_test);
-figure
+figure(10);
 cm = confusionchart(categorical(objects_test),categorical(Yfit))
 cm.RowSummary = 'row-normalized';
 cm.ColumnSummary = 'column-normalized';
@@ -260,9 +260,9 @@ set(gca,'FontSize',15)
 mean(categorical(objects_test) == categorical(Yfit))
 
 %% Visualize 2 of the trees
-figure
+figure(11);
 view(Mdl.Trees{3},'Mode','graph');
-figure
+figure(12);
 view(Mdl.Trees{7},'Mode','graph');
 
 
@@ -281,7 +281,7 @@ Mdl = TreeBagger(50,X,Y,'OOBPrediction','On',...
 
 % view(Mdl.Trees{1},'Mode','graph');
 
-figure;
+figure(13);
 oobErrorBaggedEnsemble = oobError(Mdl);
 plot(oobErrorBaggedEnsemble)
 xlabel 'Number of grown trees';
@@ -291,7 +291,7 @@ no_trees = 13;
 Mdl = TreeBagger(no_trees,X,Y,'OOBPrediction','On',...
     'Method','classification');
 Yfit = predict(Mdl,electrodes_data(test_indx,:));
-figure
+figure(14);
 cm = confusionchart(categorical(objects_test),categorical(Yfit))
 cm.RowSummary = 'row-normalized';
 cm.ColumnSummary = 'column-normalized';
