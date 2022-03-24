@@ -157,7 +157,7 @@ for i = 1:6
     n = n+10;
 end
 hold off
-legend()%"FontSize",20)
+legend()%"FontSize",15)
 title("Electrode data for the different objects projected on to the first three principal components");
 xlabel("First Principal Component")%, "FontSize",15);
 ylabel("Second Principal Component")%, "FontSize",15);
