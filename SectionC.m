@@ -72,11 +72,11 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Pressure', "FontSize",25)
-ylabel('Vibreaiton', "FontSize",25)
-%title("Pressure Vs Vibration for the 'Black foam' and 'Car sponge' with the LDA function")
+xlabel('Pressure')%, "FontSize",25)
+ylabel('Vibreaiton')%, "FontSize")%,25)
+title("Pressure Vs Vibration for the 'Black foam' and 'Car sponge' with the LDA function")
 %--------------------------------------------------------------------------
 % Pressure vs Temp
 disp("---------------------------")
@@ -98,12 +98,12 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) ...
     floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
-xlabel('Pressure', "FontSize",25)
-ylabel('Temperature', "FontSize",25)
-%title("Pressure Vs Temperature for the 'Black foam' and 'Car sponge' with the LDA function")
+xlabel('Pressure')%, "FontSize",25)
+ylabel('Temperature')%, "FontSize",25)
+title("Pressure Vs Temperature for the 'Black foam' and 'Car sponge' with the LDA function")
 %--------------------------------------------------------------------------
 % Temp vs Vibration
 disp("---------------------------")
@@ -125,12 +125,12 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",25)
 axis([floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))...
     floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Temperature', "FontSize",25)
-ylabel('Vibrations', "FontSize",25)
-%title("Temprature Vs Vibrations for the 'Black foam' and 'Car sponge' with the LDA function")
+xlabel('Temperature')%, "FontSize",25)
+ylabel('Vibrations')%, "FontSize",25)
+title("Temprature Vs Vibrations for the 'Black foam' and 'Car sponge' with the LDA function")
 
 %% Part B
 disp("----------------------------")
@@ -174,7 +174,7 @@ patch([-eigenVectors(1,vec1Index),-eigenVectors(1,vec2Index),eigenVectors(1,vec1
       'k', 'FaceColor','#0072BD','FaceAlpha', 0.5, "DisplayName", '', 'HandleVisibility', 'off');
 hold off
 
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",15)
 grid()
 view(3)
 
@@ -182,11 +182,11 @@ axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all'))...
       floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))...
       floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
 
-xlabel("Pressure", "FontSize",25);
-ylabel("Vibration", "FontSize",25);
-zlabel("Temperature", "FontSize",25);
+xlabel("Pressure")%, "FontSize",15);
+ylabel("Vibration")%, "FontSize",15);
+zlabel("Temperature")%, "FontSize",15);
 
-%title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
+title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
 
 %% Part C
 disp("----------------------------")
@@ -239,11 +239,11 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Pressure', "FontSize",25)
-ylabel('Vibreaiton', "FontSize",25)
-%title("Pressure Vs Vibration for the 'Acrylic' and 'Steel vase' with the LDA function")
+xlabel('Pressure')%, "FontSize",25)
+ylabel('Vibreaiton')%, "FontSize",25)
+title("Pressure Vs Vibration for the 'Acrylic' and 'Steel vase' with the LDA function")
 
 %--------------------------------------------------------------------------
 % Pressure vs Temp
@@ -266,12 +266,12 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",25)
 axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all')) ...
     floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
-xlabel('Pressure', "FontSize",25)
-ylabel('Temperature', "FontSize",25)
-%title("Pressure Vs Temprature for the 'Acrylic' and 'Steel vase' with the LDA function")
+xlabel('Pressure')%, "FontSize",25)
+ylabel('Temperature')%, "FontSize",25)
+title("Pressure Vs Temprature for the 'Acrylic' and 'Steel vase' with the LDA function")
 %--------------------------------------------------------------------------
 % Temp vs Vibration
 disp("---------------------------")
@@ -293,12 +293,12 @@ plot(0,0,'ko',"MarkerSize",10, 'DisplayName','Group Mean');
 plot([-eigenVectors(1,vecIndex),eigenVectors(1,vecIndex)].*10,[-eigenVectors(2,vecIndex),eigenVectors(2,vecIndex)].*10, 'k', "LineWidth",1, 'DisplayName','LDA function')
 hold off 
 grid()
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",25)
 axis([floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))...
     floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))])
-xlabel('Temperature', "FontSize",25)
-ylabel('Vibrations', "FontSize",25)
-%title("Temprature Vs Vibrations for the 'Acrylic' and 'Steel vase' with the LDA function")
+xlabel('Temperature')%, "FontSize",25)
+ylabel('Vibrations')%, "FontSize",25)
+title("Temprature Vs Vibrations for the 'Acrylic' and 'Steel vase' with the LDA function")
 
 %--------------------------------------------------------------------------
 % PVT
@@ -341,7 +341,7 @@ patch([-eigenVectors(1,vec1Index),-eigenVectors(1,vec2Index),eigenVectors(1,vec1
       'k', 'FaceColor','#77AC30','FaceAlpha', 0.5, "DisplayName", '', 'HandleVisibility', 'off');
 hold off
 
-legend('Location','bestoutside', "FontSize",25)
+legend('Location','bestoutside')%, "FontSize",25)
 grid()
 view(3)
 
@@ -349,11 +349,11 @@ axis([floor(min(Pressure, [], 'all')) ceil(max(Pressure, [], 'all'))...
       floor(min(Vibration, [], 'all')) ceil(max(Vibration, [], 'all'))...
       floor(min(Temp, [], 'all')) ceil(max(Temp, [], 'all'))])
 
-xlabel("Pressure", "FontSize",25);
-ylabel("Vibration", "FontSize",25);
-zlabel("Temperature", "FontSize",25);
+xlabel("Pressure")%, "FontSize",25);
+ylabel("Vibration")%, "FontSize",25);
+zlabel("Temperature")%, "FontSize",25);
 
-%title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
+title("PVT data for the 'Black foam' and 'Car sponge' with the LDA function")
 
 
 

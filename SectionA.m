@@ -127,10 +127,10 @@ for i = 1:6
 end
 hold off
 
-xlabel("Pressure", "FontSize",20);
-ylabel("Vibration", "FontSize",20);
-zlabel("Temperature", "FontSize",20);
-%title("Scatter plot of the PVT data for the different objects.");
+xlabel("Pressure")%, "FontSize",20);
+ylabel("Vibration")%, "FontSize",20);
+zlabel("Temperature")%, "FontSize",20);
+title("Scatter plot of the PVT data for the different objects.");
 
 grid()
-legend("FontSize",20)
+legend()%"FontSize",20)

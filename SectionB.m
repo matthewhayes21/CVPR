@@ -34,7 +34,7 @@ Temp = (temprature - At)./sigmat;
 
 %%
 % compute the covariance matrcies
-% S = cov([Pressure, Vibration, Temp])
+
 % % calculate the eigne vectors of S
 % [V, D] = eig(S)
 
@@ -44,12 +44,12 @@ PVT = [];
 for i = 1:6
     PVT = [PVT; Pressure(:,i),Vibration(:,i),Temp(:,i)];
 end
-
+ S = cov(PVT)
 [Vec,Projected,Val] = pca(PVT);
 
-disp("The eigen vecotrs");
+disp("The eigenvecotrs");
 Vec 
-disp("The eigen values");
+disp("The eigenvalues");
 Val
 %% visualise the data
 figure(1);
@@ -80,13 +80,13 @@ hold off
 
 
 % other  stuff
-xlabel("Pressure", "FontSize",20);
-ylabel("Vibration", "FontSize",20);
-zlabel("Temperature", "FontSize",20);
-%title("Scatter plot of the PVT data for the different objects.");
+xlabel("Pressure")% "FontSize",20);
+ylabel("Vibration")% "FontSize",20);
+zlabel("Temperature")% "FontSize",20);
+title("Scatter plot of the PVT data for the different objects.");
 
 grid()
-legend("Location","eastoutside", "FontSize",20)
+legend("Location","eastoutside")% "FontSize",20)
 %%
 figure(2);
 % plot of data reduced to two dimentions
@@ -98,11 +98,11 @@ for i = 1:6
 end
 hold off
 grid()
-legend("Location","eastoutside","FontSize",20)
+legend("Location","eastoutside")%,"FontSize",20)
 
-xlabel("First Principal Component", "FontSize",20);
-ylabel("Second Principal Component", "FontSize",20);
-%title("Scatter plot of the PVT data projected on to the first two principal components");
+xlabel("First Principal Component")%, "FontSize",20);
+ylabel("Second Principal Component")%, "FontSize",20);
+title("Scatter plot of the PVT data projected on to the first two principal components");
 %%
 figure(3);
 % plot the data on a single axis
@@ -120,7 +120,7 @@ end
 for j = 1:3
     subplot(3,1,j)
     grid();
-    title("Data projected on to principal companent "+string(j), "FontSize",20);
+    title("Data projected on to principal companent "+string(j))%, "FontSize",20);
 end
 
 %% Part 2
@@ -140,9 +140,9 @@ figure(4);
 plot(1:1:length(eVal), eVal, 'o-', 'LineWidth',1)
 axis([1  18 0 ceil(max(eVal))])
 grid()
-%title("Scree Plot")
-ylabel("Eignnvalue", "FontSize",20)
-xlabel("Principal Component", "FontSize",20)
+title("Scree Plot")
+ylabel("Eignnvalue")%, "FontSize",20)
+xlabel("Principal Component")%, "FontSize",20)
 
 %%
 figure(5);
@@ -157,8 +157,8 @@ for i = 1:6
     n = n+10;
 end
 hold off
-legend("FontSize",20)
-%title("Electrode data for the different objects projected on to the first three principal components");
-xlabel("First Principal Component", "FontSize",15);
-ylabel("Second Principal Component", "FontSize",15);
-zlabel("Third Principal Component", "FontSize",15);
+legend()%"FontSize",20)
+title("Electrode data for the different objects projected on to the first three principal components");
+xlabel("First Principal Component")%, "FontSize",15);
+ylabel("Second Principal Component")%, "FontSize",15);
+zlabel("Third Principal Component")%, "FontSize",15);
